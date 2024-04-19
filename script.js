@@ -12,11 +12,8 @@ function jokeTeller() {
     }
 
     const info = [];
-    //const jokeDataValues = Object.values(jokeData);
-    //console.log(jokeData);
 
      for (let prop in jokeData) {
-        //console.log(jokeData[prop], '<<<prop')
         const randomIndex = getRandomInt(prop.length);
         switch (prop) {
             case 'sub':
