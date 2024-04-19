@@ -1,25 +1,51 @@
+function getRandomInt(num) {
+    return Math.floor(Math.random() * num);
+  }
+
 function jokeTeller() {
     const jokeData = {
-        x: ['man', 'woman', 'dog', 'cow', 'fish'],
-        y: ['eat', 'throw', 'wave at', 'insult', 'salute'],
-        z: ['banana', 'pie', 'robot', 'car', 'platypus'],
-        a: ['see', 'get', 'understand', 'feel', 'experience'],
-        b: ['themself', 'life', 'the origins of space and time', 'what love is', 'something']
+        sub: ['man', 'woman', 'dog', 'cow', 'fish'],
+        v1: ['eat', 'throw', 'wave at', 'insult', 'salute'],
+        ob1: ['banana', 'pie', 'robot', 'car', 'platypus'],
+        v2: ['see', 'get', 'understand', 'feel', 'experience'],
+        ob2: ['themself', 'life', 'the origins of space and time', 'what love is', 'something']
     }
 
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
-      }
+    const info = [];
+    //const jokeDataValues = Object.values(jokeData);
+    //console.log(jokeData);
 
-    const subject = jokeData.x[getRandomInt(jokeData.x.length)];
-    const verb1 = jokeData.y[getRandomInt(jokeData.y.length)];
-    const object1 = jokeData.z[getRandomInt(jokeData.z.length)];
-    const verb2 = jokeData.a[getRandomInt(jokeData.a.length)];
-    const object2 = jokeData.b[getRandomInt(jokeData.b.length)];
-
-    const joke = `Why did the ${subject} ${verb1} the ${object1}? To ${verb2} ${object2}!`
-    
-    console.log(joke);
+     for (let prop in jokeData) {
+        //console.log(jokeData[prop], '<<<prop')
+        const randomIndex = getRandomInt(prop.length);
+        switch (prop) {
+            case 'sub':
+                info.push(`Why did the ${jokeData[prop][randomIndex]} `)
+                break
+            case 'v1':
+                info.push(`${jokeData[prop][randomIndex]} the `)
+                break
+            case 'ob1':
+                info.push(`${jokeData[prop][randomIndex]}?
+                
+`)
+                break
+            case 'v2':
+                info.push(`To ${jokeData[prop][randomIndex]} `)
+                break
+            case 'ob2':
+                info.push(`${jokeData[prop][randomIndex]}!!!`)
+                break
+            default:
+                info.push(`There is not enough information to complete the joke! :(`)
+        }
 }
 
-jokeTeller();
+    function jokeCompiler(arr) {
+        const joke = arr.join('');
+        console.log(joke);
+    }
+    jokeCompiler(info);
+}
+
+jokeTeller()
